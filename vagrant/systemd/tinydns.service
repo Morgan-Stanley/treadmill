@@ -1,0 +1,15 @@
+[Unit]
+Description=Tinydns Main Server
+After=network.target
+
+[Service]
+User=root
+Group=root
+SyslogIdentifier=tinydns
+ExecStart=/opt/s6/bin/s6-envuidgid tinydns /opt/s6/bin/s6-envdir /etc/tinydns/env/ \
+  /opt/s6/bin/s6-softlimit -d300000 /usr/local/bin/tinydns
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

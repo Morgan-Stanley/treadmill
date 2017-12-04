@@ -1,0 +1,16 @@
+[Unit]
+Description=Treadmill zookeeper filesystem sync to tinydns
+After=network.target
+
+[Service]
+User=root
+Group=root
+SyslogIdentifier=treadmill
+ExecStart=/opt/s6/bin/s6-envdir /var/tmp/treadmill-master/treadmill/env \
+  /opt/treadmill/bin/treadmill sproc tinydns --fs-root /var/tmp/zk2fs \
+  --dns-root /etc/tinydns/root
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

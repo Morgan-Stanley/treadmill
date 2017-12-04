@@ -8,6 +8,8 @@ DEFAULTS = {
     'treadmill_cpu_cores': 0,
     'treadmill_mem': '-1G',
     'treadmill_core_mem': '1G',
+    'treadmill_dns_domain': 'treadmill.internal',
+    'treadmill_dns_server': '10.10.10.10',
     'localdisk_img_location': '{{ dir }}',
     'localdisk_img_size': '-2G',
     'localdisk_block_dev': None,

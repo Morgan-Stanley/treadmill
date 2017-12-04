@@ -1,0 +1,17 @@
+[Unit]
+Description=Tinydns TCP Server
+After=network.target
+
+[Service]
+User=root
+Group=root
+SyslogIdentifier=tinydns
+ExecStart=/opt/s6/bin/s6-envdir /etc/axfrdns/env sh -c '\
+  /opt/s6/bin/s6-envuidgid tinydnstcp /opt/s6/bin/s6-softlimit -d300000 \
+  /usr/local/bin/tcpserver -vDRHl0 -x \
+  /etc/axfrdns/tcp.cdb -- "$IP" 53 /usr/local/bin/axfrdns'
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

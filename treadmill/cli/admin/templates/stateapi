@@ -1,0 +1,18 @@
+memory: 256M
+cpu: 15%
+disk: 128M
+services:
+  - command: |
+      exec {{ treadmill }}/bin/treadmill sproc restapi -p 8000 \
+        --title 'Treadmill_Query_API' --workers 0 \
+        -m state,endpoint --cors-origin='.*'
+    name: rest-api
+    restart:
+      limit: 5
+      interval: 60
+endpoints:
+  - name: http
+    port: 8000
+    type: infra
+affinity_limits:
+  server: 1
