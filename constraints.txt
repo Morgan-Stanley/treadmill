@@ -61,7 +61,7 @@ tabulate==0.7.7
 tornado==4.5.3
 Treadmill==3.7
 Treadmill-AWS==1.0
-Twisted==17.9.0
+Twisted==19.7.0
 tzlocal==1.5.1
 urllib3==1.22
 virtualenv==16.6.0
