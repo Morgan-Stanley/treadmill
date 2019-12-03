@@ -68,14 +68,30 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder "../../treadmill", "/home/vagrant/treadmill"
   config.vm.synced_folder "../../treadmill-pid1", "/home/vagrant/treadmill-pid1"
 
+  if ENV['TREADMILL_VAGRANT_ENV'] == 'ipa'
+    config.vm.define :ipa do |ipa|
+      ipa.vm.provider "virtualbox" do |v|
+        v.memory = 1024*2
+        v.cpus = 1
+      end
+      ipa.vm.network :private_network, ip: "10.10.10.12"
+      ipa.vm.hostname = 'ipa.ms.local'
+      ipa.vm.provision "shell", path: "./scripts/provision_ipa.sh"
+    end
+  end
+
   config.vm.define :master do |master|
     master.vm.provider "virtualbox" do |v|
       v.memory = 1024
       v.cpus = 1
     end
     master.vm.network :private_network, ip: "10.10.10.10"
-    master.vm.hostname = 'master'
-    master.vm.provision "shell", path: "./scripts/provision_master.sh"
+    master.vm.hostname = 'master.ms.local'
+    if ENV['TREADMILL_VAGRANT_ENV'] == 'ipa'
+      master.vm.provision "shell", path: "./scripts/provision_master_ipa.sh"
+    else
+      master.vm.provision "shell", path: "./scripts/provision_master.sh"
+    end
   end
 
   config.vm.define :node do |node|
@@ -84,8 +100,12 @@ Vagrant.configure("2") do |config|
       v.cpus = 1
     end
     node.vm.network :private_network, ip: "10.10.10.11"
-    node.vm.hostname = 'node'
-    node.vm.provision "shell", path: "./scripts/provision_node.sh"
+    node.vm.hostname = 'node.ms.local'
+    if ENV['TREADMILL_VAGRANT_ENV'] == 'ipa'
+      node.vm.provision "shell", path: "./scripts/provision_node_ipa.sh"
+    else
+      node.vm.provision "shell", path: "./scripts/provision_node.sh"
+    end
   end
 
 end

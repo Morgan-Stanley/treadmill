@@ -14,3 +14,5 @@ yum -y install krb5-devel
 yum -y install openssl-devel
 yum -y install bison
 yum -y install telnet
+
+ifup eth1

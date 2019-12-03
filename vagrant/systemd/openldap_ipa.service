@@ -1,0 +1,15 @@
+[Unit]
+Description=OpenLDAP Directory Server
+After=network.target
+
+[Service]
+Environment="KRB5_KTNAME=/etc/ldap.keytab"
+User=treadmld
+Group=treadmld
+SyslogIdentifier=openldap
+ExecStart=/var/tmp/treadmill-openldap/bin/run.sh
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

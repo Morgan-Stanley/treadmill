@@ -70,7 +70,7 @@ echo Configuring local cell
 
 # Add server to the cell.
 /opt/s6/bin/s6-setuidgid treadmld \
-    $TM admin ldap server configure node --cell local
+    $TM admin ldap server configure node.ms.local --cell local
 
 echo Extracting cell config
 
