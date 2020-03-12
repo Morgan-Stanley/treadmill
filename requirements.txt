@@ -22,7 +22,7 @@ Numpy>=1.13,<2
 pandas>=0.19,<1
 parse>=1.8,<2
 prettytable>=0.7,<1
-psutil>=4.2,<5
+psutil>=4.2,<6
 pykerberos>=1.1,<2 ; sys_platform == 'linux'
 pypiwin32>=219 ; sys_platform == 'win32'
 pytz>=2017
