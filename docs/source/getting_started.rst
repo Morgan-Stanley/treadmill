@@ -116,5 +116,5 @@ SSH
 .. _VirtualBox: https://www.virtualbox.org/wiki/Downloads
 .. _Vagrant: https://www.vagrantup.com/docs/installation/
 .. _Guest Additions Plugin: https://github.com/dotless-de/vagrant-vbguest
-.. _treadmill: https://github.com/Morgan-Stanley/treadmill
-.. _treadmill_pid1: https://github.com/Morgan-Stanley/treadmill-pid1
+.. _treadmill: https://github.com/MorganStanley/treadmill
+.. _treadmill_pid1: https://github.com/MorganStanley/treadmill-pid1
