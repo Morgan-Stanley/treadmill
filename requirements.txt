@@ -26,7 +26,7 @@ psutil>=4.2,<5
 pykerberos>=1.1,<2 ; sys_platform == 'linux'
 pypiwin32>=219 ; sys_platform == 'win32'
 pytz>=2017
-PyYAML>=3,<4
+PyYAML>=3,<6
 requests-kerberos>=0.11,<1
 requests-unixsocket>=0.1,<1 ; sys_platform == 'linux'
 requests>=2.18,<3
